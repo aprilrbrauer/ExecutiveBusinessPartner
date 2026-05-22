@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,7 +212,24 @@
     justify-content: center;
     text-align: center;
   }
- 
+  .headshot-inner { padding: 2rem; }
+  .headshot-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .headshot-hint {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .headshot-sub {
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+  }
+  .headshot-sub code {
+    background: var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    font-size: 0.72rem;
   }
 
   /* ── PERSONAL ── */
@@ -391,6 +409,108 @@
     position: absolute; left: 0;
     color: var(--accent);
     font-size: 0.8rem;
+  }
+
+  /* ── AI FEATURED ── */
+  .ai-featured {
+    margin-top: 2rem;
+    border: 1.5px solid rgba(245,166,35,0.35);
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    overflow: hidden;
+    background: rgba(245,166,35,0.04);
+  }
+  .ai-featured-left {
+    padding: 3rem;
+    border-right: 1.5px solid rgba(245,166,35,0.2);
+  }
+  .ai-featured-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    border: 1px solid rgba(245,166,35,0.4);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: 1.2rem;
+  }
+  .ai-featured-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .ai-featured-title em { color: var(--accent-light); font-style: italic; }
+  .ai-featured-desc {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .ai-featured-meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .ai-featured-pill {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+  }
+  .ai-featured-btn {
+    display: inline-block;
+    background: var(--accent-light);
+    color: #0F2D24;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.8rem 1.75rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .ai-featured-btn:hover { background: #e09510; transform: translateY(-1px); }
+  .ai-featured-right {
+    padding: 3rem 2.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .ai-featured-phases {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+  .ai-phase {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .ai-phase:last-child { border-bottom: none; }
+  .ai-phase-days {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 0.2rem;
+  }
+  .ai-phase-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+  .ai-phase-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    line-height: 1.5;
   }
 
   /* ── AI SPOTLIGHT ── */
@@ -581,6 +701,8 @@
     .hero-stat + .hero-stat { margin-top: 0; padding-top: 0; border-top: none; padding-left: 2rem; border-left: 1px solid rgba(255,255,255,0.1); }
     .about-grid, .contact-grid { grid-template-columns: 1fr; }
     .photo-grid { grid-template-columns: 1fr; }
+    .ai-featured { grid-template-columns: 1fr; }
+    .ai-featured-left { border-right: none; border-bottom: 1.5px solid rgba(245,166,35,0.2); }
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .nav-links { display: none; }
   }
@@ -595,9 +717,9 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#ai">AI Work</a></li>
+    <li><a href="day-one-assistant.html" target="_blank" style="color:var(--accent-light);">Day One Ready ↗</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#personal">Personal</a></li>
-    <li><a href="day-one-assistant.html">Day One Ready</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -610,8 +732,7 @@
     <p class="hero-title">I build the operating systems that let executives do their best work — calendars, communications, and AI-powered workflows that turn priorities into outcomes.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Get in Touch</a>
-<a href="#experience" class="btn btn-outline">View My Work</a>
-<a href="April_Brauer_Resume.pdf" download class="btn btn-outline">Download Resume</a>
+      <a href="#experience" class="btn btn-outline">View My Work</a>
     </div>
   </div>
   <div class="hero-right">
@@ -642,11 +763,10 @@
       <p>I'm based in San Diego and open to remote and hybrid opportunities across tech and business.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:1.5rem;">
- <img src="Headshot.png" alt="April Brauer" style="width:100%;border-radius:2px;display:block;">
+      <div class="reveal">
+        <img src="Headshot.png" alt="April Brauer" style="width:100%;border-radius:2px;display:block;">
         <p style="text-align:center; margin-top:0.75rem; font-family:'DM Serif Display',serif; font-size:1rem; color:#2E7D5E; letter-spacing:0.05em;">April R. Brauer</p>
-<p style="text-align:center; font-size:0.78rem; color:#6B8278; letter-spacing:0.1em; text-transform:uppercase; margin-top:0.2rem;">Executive Assistant Business Partner</p> 
-        </div>
-        <!-- Replace this div with: <img src="your-photo.jpg" alt="April Brauer" style="width:100%;border-radius:2px;display:block;"> -->
+        <p style="text-align:center; font-size:0.78rem; color:#6B8278; letter-spacing:0.1em; text-transform:uppercase; margin-top:0.2rem;">Executive Assistant Business Partner</p>
       </div>
       <div class="about-callout reveal">
         <p>I close loops before they become problems — and I build systems so there are fewer loops to close.</p>
@@ -681,17 +801,17 @@
       <span class="interest-label">Animals</span>
     </div>
   </div>
- <div class="photo-grid reveal">
-  <div class="photo-slot">
-    <img src="EagleTree.jpg" alt="Eagle in a tree" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;">
+  <div class="photo-grid reveal">
+    <div class="photo-slot">
+      <img src="EagleTree.jpg" alt="Eagle in a tree" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;">
+    </div>
+    <div class="photo-slot">
+      <img src="Eagle.jpg" alt="Eagle" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;">
+    </div>
+    <div class="photo-slot">
+      <img src="WhaleTail.jpg" alt="Whale tail" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;">
+    </div>
   </div>
-  <div class="photo-slot">
-    <img src="Eagle.jpg" alt="Eagle" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;">
-  </div>
-  <div class="photo-slot">
-    <img src="WhaleTail.jpg" alt="Whale tail" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;display:block;">
-  </div>
-</div>
 </section>
 
 <!-- EXPERIENCE -->
@@ -819,6 +939,41 @@
     </div>
 
   </div>
+
+  <!-- FEATURED: Day One Ready -->
+  <div class="ai-featured reveal">
+    <div class="ai-featured-left">
+      <div class="ai-featured-badge">Live Project</div>
+      <h3 class="ai-featured-title">Day One Ready <em>Assistant</em></h3>
+      <p class="ai-featured-desc">A full 90-day structured onboarding program I designed for new EABPs at Intuit's San Diego campus — because how well a new hire ramps shouldn't depend on luck or who they sit near. Built on three phases (Orient, Connect, Operate), a buddy system, and five scheduled touchpoints. At its center: a live Claude-powered AI assistant trained on eight knowledge modules covering the EABP craft framework, every tool and system, calendar philosophy, SDG campus logistics, and more.</p>
+      <div class="ai-featured-meta">
+        <span class="ai-featured-pill">Claude (Anthropic)</span>
+        <span class="ai-featured-pill">90-Day Program</span>
+        <span class="ai-featured-pill">SDG Campus Pilot</span>
+      </div>
+      <a href="https://aprilrbrauer.github.io/ExecutiveBusinessPartner/day-one-assistant.html" target="_blank" class="ai-featured-btn">Try the Day One Assistant →</a>
+    </div>
+    <div class="ai-featured-right">
+      <div class="ai-featured-phases">
+        <div class="ai-phase">
+          <div class="ai-phase-days">Days 1–30</div>
+          <div class="ai-phase-name">Orient</div>
+          <div class="ai-phase-desc">Systems, tools, campus culture, and the exec relationship</div>
+        </div>
+        <div class="ai-phase">
+          <div class="ai-phase-days">Days 31–60</div>
+          <div class="ai-phase-name">Connect</div>
+          <div class="ai-phase-desc">Stakeholder maps, peer introductions, cross-functional contacts</div>
+        </div>
+        <div class="ai-phase">
+          <div class="ai-phase-days">Days 61–90</div>
+          <div class="ai-phase-name">Operate</div>
+          <div class="ai-phase-desc">Core workflows, craft self-assessment, development goals</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="ai-tool-list reveal">
     <span class="ai-tool-label">Built with:</span>
     <span class="ai-tool-pill">Claude (Anthropic)</span>
@@ -895,13 +1050,6 @@
   <div class="contact-grid">
     <p class="contact-intro reveal">I'm currently open to new Executive Assistant Business Partner opportunities — remote, hybrid, or San Diego-based. If you're looking for someone who brings both deep operational experience and genuine AI fluency to the role, I'd love to connect.</p>
     <div class="contact-links">
-      <a href="April_Brauer_Resume.pdf" download class="contact-link reveal">
-  <div class="contact-link-icon">📄</div>
-  <div class="contact-link-info">
-    <div class="contact-link-label">Resume</div>
-    <div class="contact-link-value">Download PDF</div>
-  </div>
-</a>
       <a href="mailto:aprilrbrauer@gmail.com" class="contact-link reveal">
         <div class="contact-link-icon">✉️</div>
         <div class="contact-link-info">
