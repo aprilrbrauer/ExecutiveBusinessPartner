@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>April R. Brauer — Executive Assistant Business Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #EFF4F2;
+    --ink: #152820;
+    --warm-gray: #6B8278;
+    --accent: #2E7D5E;
+    --accent-light: #F5A623;
+    --card-bg: #FFFFFF;
+    --border: #C8DDD6;
+    --section-bg: #E0ECE7;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(239, 244, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 60px;
+  }
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vw 5vw 8vw 8vw;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.25s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-title {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 300;
+    color: var(--warm-gray);
+    margin-top: 1.2rem;
+    max-width: 38ch;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #b0561f; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-right {
+    background: #0F2D24;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 8vw 8vw 8vw 6vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,125,94,0.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-stat {
+    opacity: 0;
+    animation: fadeUp 0.7s forwards;
+  }
+  .hero-stat:nth-child(1) { animation-delay: 0.5s; }
+  .hero-stat:nth-child(2) { animation-delay: 0.65s; }
+  .hero-stat:nth-child(3) { animation-delay: 0.8s; }
+  .hero-stat + .hero-stat { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-number span { color: var(--accent-light); }
+  .stat-label {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-top: 0.4rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 8vw; }
+  section.alt { background: var(--section-bg); }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    max-width: 22ch;
+  }
+  .section-heading em { font-style: italic; color: var(--accent); }
+
+  /* ── HEADSHOT ── */
+  .headshot-placeholder {
+    border: 2px dashed var(--border);
+    border-radius: 2px;
+    background: var(--section-bg);
+    aspect-ratio: 3/4;
+    max-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .headshot-inner { padding: 2rem; }
+  .headshot-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .headshot-hint {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .headshot-sub {
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+  }
+  .headshot-sub code {
+    background: var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    font-size: 0.72rem;
+  }
+
+  /* ── PERSONAL ── */
+  .personal-intro {
+    max-width: 60ch;
+    margin-top: 2rem;
+  }
+  .personal-intro p {
+    font-size: 1.05rem;
+    color: #3A5248;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .personal-interests {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  .interest-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 0.65rem 1.25rem;
+    border-radius: 100px;
+  }
+  .interest-icon { font-size: 1.1rem; }
+  .interest-label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .photo-slot img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+  .photo-placeholder {
+    aspect-ratio: 4/3;
+    border: 2px dashed var(--border);
+    border-radius: 2px;
+    background: var(--section-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 0.4rem;
+  }
+  .photo-placeholder span { font-size: 1.8rem; }
+  .photo-placeholder p {
+    font-size: 0.82rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+  }
+  .photo-hint {
+    font-size: 0.7rem !important;
+    color: var(--border) !important;
+  }
+  .photo-hint code {
+    background: var(--border);
+    padding: 0.1rem 0.3rem;
+    border-radius: 2px;
+    color: var(--warm-gray);
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 6vw;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .about-body p {
+    font-size: 1.05rem;
+    color: #4A4540;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+  .about-body p strong { font-weight: 500; color: var(--ink); }
+  .about-callout {
+    background: #0F2D24;
+    color: #fff;
+    padding: 2.5rem;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-callout::after {
+    content: '"';
+    font-family: 'DM Serif Display', serif;
+    font-size: 12rem;
+    position: absolute;
+    bottom: -2.5rem; right: 1rem;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+  }
+  .about-callout p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    position: relative; z-index: 1;
+  }
+  .about-callout cite {
+    display: block;
+    margin-top: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: 1px solid var(--border); }
+  .exp-meta { padding-top: 0.15rem; }
+  .exp-company {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .exp-dates {
+    font-size: 0.82rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+  }
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .exp-desc {
+    font-size: 0.95rem;
+    color: #4A4540;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-bullets li {
+    font-size: 0.92rem;
+    color: #4A4540;
+    font-weight: 300;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* ── AI SPOTLIGHT ── */
+  .ai-section {
+    background: #0F2D24;
+    color: #fff;
+    padding: 7rem 8vw;
+  }
+  .ai-section .section-label { color: var(--accent-light); }
+  .ai-section .section-heading { color: #fff; }
+  .ai-section .section-heading em { color: var(--accent-light); }
+  .ai-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px;
+    margin-top: 3rem;
+    border: 1.5px solid rgba(255,255,255,0.08);
+  }
+  .ai-card {
+    background: rgba(255,255,255,0.03);
+    padding: 2.5rem 2rem;
+    border: 1.5px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-card:hover { background: rgba(46,125,94,0.12); }
+  .ai-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .ai-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .ai-card-desc {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .ai-card-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    border: 1px solid rgba(245,166,35,0.4);
+    padding: 0.25rem 0.65rem;
+    border-radius: 1px;
+  }
+  .ai-tool-list {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    margin-top: 3rem;
+    align-items: center;
+  }
+  .ai-tool-pill {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+  }
+  .ai-tool-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 2px;
+  }
+  .skill-category {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .skill-items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    font-size: 0.82rem;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1px;
+    font-weight: 400;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6vw;
+    margin-top: 3rem;
+    align-items: start;
+  }
+  .contact-intro {
+    font-size: 1.05rem;
+    color: #4A4540;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--cream); }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: var(--section-bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-link-info { flex: 1; }
+  .contact-link-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 0.2rem;
+  }
+  .contact-link-value {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0F2D24;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { padding: 4rem 8vw; flex-direction: row; gap: 3rem; flex-wrap: wrap; }
+    .hero-stat + .hero-stat { margin-top: 0; padding-top: 0; border-top: none; padding-left: 2rem; border-left: 1px solid rgba(255,255,255,0.1); }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#">April R. Brauer</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#ai">AI Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#personal">Personal</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Executive Assistant Business Partner · San Diego, CA</p>
+    <h1 class="hero-name">April R.<br><em>Brauer</em></h1>
+    <p class="hero-title">I build the operating systems that let executives do their best work — calendars, communications, and AI-powered workflows that turn priorities into outcomes.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn btn-outline">View My Work</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="stat-number">20<span>+</span></div>
+      <div class="stat-label">Years supporting C-suite & VP-level leaders</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">800<span>+</span></div>
+      <div class="stat-label">Attendees coordinated at a single team offsite</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">AI<span>-first</span></div>
+      <div class="stat-label">Custom Claude automations built for executive support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label reveal">About Me</p>
+  <h2 class="section-heading reveal">The executive behind<br>the <em>executive</em></h2>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I'm an Executive Assistant Business Partner with <strong>more than two decades</strong> of experience supporting some of the most demanding leaders in tech and government — from a Board-appointed Port Auditor to VPs at Intuit overseeing 60+ person organizations.</p>
+      <p>My edge isn't just logistics — it's <strong>systems thinking</strong>. I design the structures that keep an executive's day from becoming reactive: color-coded calendar architectures, AI-powered briefing tools, communication frameworks, and event machines that actually run themselves.</p>
+      <p>Recently, I've gone deep on <strong>AI workflow design</strong> — building custom automations with Claude and Cowork that eliminate hours of manual prep work per week. I don't just use AI tools; I build them, tailored for the specific operating rhythms of senior executives.</p>
+      <p>I'm based in San Diego and open to remote and hybrid opportunities across tech and business.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+      <div class="headshot-placeholder reveal">
+        <div class="headshot-inner">
+          <div class="headshot-icon">📷</div>
+          <p class="headshot-hint">Add your headshot here</p>
+          <p class="headshot-sub">Replace the <code>src</code> in the HTML with your photo file</p>
+        </div>
+        <!-- Replace this div with: <img src="your-photo.jpg" alt="April Brauer" style="width:100%;border-radius:2px;display:block;"> -->
+      </div>
+      <div class="about-callout reveal">
+        <p>I close loops before they become problems — and I build systems so there are fewer loops to close.</p>
+        <cite>— April Brauer</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL -->
+<section id="personal">
+  <p class="section-label reveal">Beyond the Work</p>
+  <h2 class="section-heading reveal">A little about<br><em>April</em></h2>
+  <div class="personal-intro reveal">
+    <p>Outside of work, I'm most alive when I'm somewhere unexpected — camera in hand, watching a whale breach, or getting to know a new city (or a new animal).</p>
+  </div>
+  <div class="personal-interests reveal">
+    <div class="interest-item">
+      <span class="interest-icon">🐋</span>
+      <span class="interest-label">Whale Watching</span>
+    </div>
+    <div class="interest-item">
+      <span class="interest-icon">📸</span>
+      <span class="interest-label">Photography</span>
+    </div>
+    <div class="interest-item">
+      <span class="interest-icon">✈️</span>
+      <span class="interest-label">Travel</span>
+    </div>
+    <div class="interest-item">
+      <span class="interest-icon">🐾</span>
+      <span class="interest-label">Animals</span>
+    </div>
+  </div>
+  <div class="photo-grid reveal">
+    <div class="photo-slot">
+      <div class="photo-placeholder">
+        <span>📸</span>
+        <p>Add a personal photo</p>
+        <p class="photo-hint">Replace with <code>&lt;img src="photo1.jpg"&gt;</code></p>
+      </div>
+    </div>
+    <div class="photo-slot">
+      <div class="photo-placeholder">
+        <span>📸</span>
+        <p>Add a personal photo</p>
+        <p class="photo-hint">Replace with <code>&lt;img src="photo2.jpg"&gt;</code></p>
+      </div>
+    </div>
+    <div class="photo-slot">
+      <div class="photo-placeholder">
+        <span>📸</span>
+        <p>Add a personal photo</p>
+        <p class="photo-hint">Replace with <code>&lt;img src="photo3.jpg"&gt;</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="alt">
+  <p class="section-label reveal">Experience</p>
+  <h2 class="section-heading reveal">Two decades of<br><em>high-stakes</em> support</h2>
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-company">Intuit</div>
+        <div class="exp-dates">Jul 2022 – Present</div>
+      </div>
+      <div>
+        <div class="exp-role">Executive Assistant Business Partner</div>
+        <p class="exp-desc">Supporting VP of CG Assisted Commercialization (60+ person org). Previously supported VP of Core Tax & Monetization and EVP of Intuit Customer Success.</p>
+        <ul class="exp-bullets">
+          <li>Built a suite of AI tools for daily executive prep: morning briefings from live calendar, email & Slack data; 1:1 prep generator; meeting note summaries; and a persistent action item dashboard.</li>
+          <li>Architected comprehensive calendar strategies minimizing scheduling friction by 15% through rigid decision logic and cross-EABP collaboration.</li>
+          <li>Write all executive communications — team updates, partner outreach (Mastercard), peer messages, and employee recognition.</li>
+          <li>Orchestrated an 800+ attendee multi-site team offsite at Disneyland, including $15K procurement, RSVP management, and individualized accessibility support.</li>
+          <li>Built a 10-category color-coded Outlook calendar system used in bi-annual calendar audits surfacing real time allocation patterns.</li>
+          <li>Directed high-profile VP offboarding with zero operational friction — stabilized workflows within 24 hours across 10+ stakeholders.</li>
+          <li>Served as primary operational lead for the 48-hour peak tax season War Room (approx. 100 people, multi-room).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-company">Port of San Diego</div>
+        <div class="exp-dates">Jul 2012 – Jul 2022</div>
+      </div>
+      <div>
+        <div class="exp-role">Assistant to Port Auditor (Board Appointee)</div>
+        <p class="exp-desc">Sole support to a Board-appointed executive with full access to sensitive financial and operational information across the Port.</p>
+        <ul class="exp-bullets">
+          <li>Managed all scheduling, correspondence, and logistics as the single administrative resource for the Port Auditor.</li>
+          <li>Served as custodian of confidential audit records and financial documents with strict chain-of-custody compliance.</li>
+          <li>Coordinated domestic and international travel including visa processing for the auditor and audit team.</li>
+          <li>Reconciled AP/AR, travel budgets, and invoicing; reviewed and approved procurement requests.</li>
+          <li>Prepared all materials for Board meetings and external briefings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-company">Navy Exchange</div>
+        <div class="exp-dates">Jul 2008 – Jul 2012</div>
+      </div>
+      <div>
+        <div class="exp-role">Assistant to General Manager</div>
+        <ul class="exp-bullets">
+          <li>Supported the GM of a high-volume retail and services operation on Naval Base San Diego.</li>
+          <li>Served as primary liaison between the GM's office and department heads, vendors, and base command.</li>
+          <li>Coordinated logistics for leadership meetings, audits, and operational reviews.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-company">Morris Cerullo World Evangelism</div>
+        <div class="exp-dates">Sep 2003 – Jul 2008</div>
+      </div>
+      <div>
+        <div class="exp-role">Executive Assistant to Vice President</div>
+        <ul class="exp-bullets">
+          <li>Full EA support for a VP at an international nonprofit — communications, multi-country travel, donor relations, and event logistics.</li>
+          <li>Managed visa processing and international itineraries across multiple countries.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AI SPOTLIGHT -->
+<section id="ai" class="ai-section">
+  <p class="section-label reveal">AI & Automation</p>
+  <h2 class="section-heading reveal">I don't just use AI.<br>I <em>build</em> with it.</h2>
+  <div class="ai-cards">
+
+    <div class="ai-card reveal">
+      <div class="ai-card-icon">☀️</div>
+      <div class="ai-card-title">Morning Calendar Triage</div>
+      <div class="ai-card-desc">A Cowork automation that runs each morning to review the day's calendar — flagging conflicts, surfacing prep needs, and ensuring the exec's time is set up for success before the first meeting starts.</div>
+      <span class="ai-card-tag">Cowork · Daily Automation</span>
+    </div>
+
+    <div class="ai-card reveal">
+      <div class="ai-card-icon">🌇</div>
+      <div class="ai-card-title">Afternoon Calendar Triage</div>
+      <div class="ai-card-desc">A second daily Cowork automation that sweeps the next day's calendar each afternoon — catching issues 24 hours out so there's always time to fix them, not just react to them.</div>
+      <span class="ai-card-tag">Cowork · Daily Automation</span>
+    </div>
+
+    <div class="ai-card reveal">
+      <div class="ai-card-icon">🤝</div>
+      <div class="ai-card-title">1:1 Prep Generator</div>
+      <div class="ai-card-desc">Automatically compiles relevant context, outstanding items, and discussion prompts before every 1:1, so the exec walks in prepared and the meeting stays focused.</div>
+      <span class="ai-card-tag">Claude · Meeting Intelligence</span>
+    </div>
+
+    <div class="ai-card reveal">
+      <div class="ai-card-icon">📋</div>
+      <div class="ai-card-title">Meeting Summary Skill</div>
+      <div class="ai-card-desc">A Claude skill that goes beyond basic recaps — it identifies action items with owners, flags potential risks, and surfaces gaps in decisions or follow-through that might otherwise slip through. Built to catch what the room missed, not just record what it said.</div>
+      <span class="ai-card-tag">Claude · Risk & Gap Detection</span>
+    </div>
+
+    <div class="ai-card reveal">
+      <div class="ai-card-icon">✅</div>
+      <div class="ai-card-title">Persistent Action Item Dashboard</div>
+      <div class="ai-card-desc">An action item tracker that persists across sessions, surfacing what's open, what's overdue, and what needs the exec's attention — without the EA having to remind anyone.</div>
+      <span class="ai-card-tag">Claude · Always-On</span>
+    </div>
+
+    <div class="ai-card reveal">
+      <div class="ai-card-icon">🗂️</div>
+      <div class="ai-card-title">Stakeholder Relationship Manager</div>
+      <div class="ai-card-desc">A Claude-powered system that tracks the exec's key relationships — preferences, last touchpoints, open threads, and communication history — so no important stakeholder ever falls through the cracks. Surfaces who needs outreach, drafts tailored messages, and keeps the exec's network warm without adding to their cognitive load.</div>
+      <span class="ai-card-tag">Claude · Relationship Intelligence</span>
+    </div>
+
+  </div>
+  <div class="ai-tool-list reveal">
+    <span class="ai-tool-label">Built with:</span>
+    <span class="ai-tool-pill">Claude (Anthropic)</span>
+    <span class="ai-tool-pill">Cowork</span>
+    <span class="ai-tool-pill">Plaud</span>
+    <span class="ai-tool-pill">Gemini</span>
+    <span class="ai-tool-pill">Microsoft 365</span>
+    <span class="ai-tool-pill">Slack API</span>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label reveal">Skills & Tools</p>
+  <h2 class="section-heading reveal">The full <em>toolkit</em></h2>
+  <div class="skills-grid">
+
+    <div class="skill-card reveal">
+      <div class="skill-category">AI & Automation</div>
+      <div class="skill-items">
+        <span class="skill-tag">Claude</span>
+        <span class="skill-tag">Gemini</span>
+        <span class="skill-tag">Plaud</span>
+        <span class="skill-tag">AI Workflow Design</span>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">Process Automation</span>
+        <span class="skill-tag">Stakeholder Relationship Management</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-category">Microsoft 365</div>
+      <div class="skill-items">
+        <span class="skill-tag">Outlook (Advanced)</span>
+        <span class="skill-tag">Teams</span>
+        <span class="skill-tag">Word</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">PowerPoint</span>
+        <span class="skill-tag">SharePoint</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-category">Collaboration & Finance</div>
+      <div class="skill-items">
+        <span class="skill-tag">Slack</span>
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">SAP</span>
+        <span class="skill-tag">Coupa</span>
+        <span class="skill-tag">Budget Reconciliation</span>
+        <span class="skill-tag">Adobe Acrobat</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-category">Core Competencies</div>
+      <div class="skill-items">
+        <span class="skill-tag">Executive Calendar Strategy</span>
+        <span class="skill-tag">Stakeholder Communications</span>
+        <span class="skill-tag">Event Planning (800+)</span>
+        <span class="skill-tag">Confidential Records</span>
+        <span class="skill-tag">Process Documentation</span>
+        <span class="skill-tag">International Travel</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="alt">
+  <p class="section-label reveal">Contact</p>
+  <h2 class="section-heading reveal">Let's talk about<br>what I can <em>build</em> for you</h2>
+  <div class="contact-grid">
+    <p class="contact-intro reveal">I'm currently open to new Executive Assistant Business Partner opportunities — remote, hybrid, or San Diego-based. If you're looking for someone who brings both deep operational experience and genuine AI fluency to the role, I'd love to connect.</p>
+    <div class="contact-links">
+      <a href="mailto:aprilrbrauer@gmail.com" class="contact-link reveal">
+        <div class="contact-link-icon">✉️</div>
+        <div class="contact-link-info">
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">aprilrbrauer@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:6195201361" class="contact-link reveal">
+        <div class="contact-link-icon">📞</div>
+        <div class="contact-link-info">
+          <div class="contact-link-label">Phone</div>
+          <div class="contact-link-value">(619) 520-1361</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/april-brauer-7832663a" target="_blank" class="contact-link reveal">
+        <div class="contact-link-icon">💼</div>
+        <div class="contact-link-info">
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">linkedin.com/in/april-brauer-7832663a</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 April R. Brauer · San Diego, CA · Built for humans, powered by intention.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
