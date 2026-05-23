@@ -161,10 +161,10 @@
   .hero-stat:nth-child(1) { animation-delay: 0.5s; }
   .hero-stat:nth-child(2) { animation-delay: 0.65s; }
   .hero-stat:nth-child(3) { animation-delay: 0.8s; }
-  .hero-stat + .hero-stat { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .hero-stat + .hero-stat { margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.1); }
   .stat-number {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2rem, 3.2vw, 3.2rem);
     color: #fff;
     line-height: 1;
   }
@@ -742,12 +742,20 @@
       <div class="stat-label">Years supporting C-suite & VP-level leaders</div>
     </div>
     <div class="hero-stat">
-      <div class="stat-number">800<span>+</span></div>
-      <div class="stat-label">Attendees coordinated at a single team offsite</div>
-    </div>
-    <div class="hero-stat">
       <div class="stat-number">AI<span>-first</span></div>
       <div class="stat-label">Custom Claude automations built for executive support</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">800<span>+</span></div>
+      <div class="stat-label">Attendees coordinated across a single multi-site offsite</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">6<span>+</span></div>
+      <div class="stat-label">AI tools built and shared across the EABP community</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">360<span>°</span></div>
+      <div class="stat-label">Stakeholder mapping built from calendar data alone</div>
     </div>
   </div>
 </section>
@@ -1033,7 +1041,7 @@
       </div>
     </div>
 
-    <div class="skill-card reveal">
+    <div class="skill-card reveal" style="grid-column: 1 / -1;">
       <div class="skill-category">Core Competencies</div>
       <div class="skill-items">
         <span class="skill-tag">Cross-Functional Stakeholder Management</span>
